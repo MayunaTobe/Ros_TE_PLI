@@ -1,4 +1,13 @@
+.gitignore
+
 *.png
 *.mat
 *.asv
 *.eps
+
+Spectrum.m
+bp.m
+scatter_grah.m
+smooth.plot.m
+Rossler.m
+Rossler2.m
