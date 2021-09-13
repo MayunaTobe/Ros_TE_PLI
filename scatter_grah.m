@@ -1,6 +1,6 @@
 % 散布図
 % loadしたあとタイトル部分変える
-% rst [B, rho, PLI, TE12, TE21]
+% rst [A, rho, PLI, TE12, TE21]
 figtitle = 'D0'; %タイトル
 
 %% rho-PLI
