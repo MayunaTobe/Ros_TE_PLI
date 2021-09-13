@@ -11,14 +11,14 @@ desiredFs = 100;
 [ry,rt] = resample(y,t,desiredFs); %リサンプル
 
 % ノイズの部分-----
-D = 0.08;
-rng(1);
+%D = 0.08;
+%rng(1);
 
-noise_1 = D*randn(size(rt,1),1);
-noise_2 = D*randn(size(rt,1),1);
+%noise_1 = D*randn(size(rt,1),1);
+%noise_2 = D*randn(size(rt,1),1);
 
-ry(:,1) = ry(:,1) + noise_1; % x1 + noise
-ry(:,4) = ry(:,4) + noise_2; % x2 + noise
+%ry(:,1) = ry(:,1) + noise_1; % x1 + noise
+%ry(:,4) = ry(:,4) + noise_2; % x2 + noise
 
 % ----------------
 
