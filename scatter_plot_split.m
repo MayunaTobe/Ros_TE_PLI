@@ -14,37 +14,59 @@ A = rst(:,1);
 data_row = size(rho,2); % PLI、TEそれぞれの個数
 data_col = size(rho,1); % Aの個数
 
-%% PLI
-figure
-plot(1:data_row,pli,'-.');
-xlabel('')
-ylabel('PLI')
+mean_pli = mean(pli,2);
 
-%% TE
-figure
-plot(1:data_row,te12,'-.');
-xlabel('')
-ylabel('TE 1→2')
+% %% PLI
+% figure
+% plot(1:data_row,pli,'-.');
+% xlabel('')
+% ylabel('PLI')
+% 
+% %% TE
+% figure
+% plot(1:data_row,te12,'-.');
+% xlabel('')
+% ylabel('TE 1→2')
+% 
+% figure
+% plot(1:data_row,te21,'-.');
+% xlabel('')
+% ylabel('TE 2→1')
+% 
+% %% TE-PLI
+% figure
+% for i=1:1:data_col
+%     scatter(te12(i,:),pli(i,:));
+%     hold on
+% end
+% xlabel('TE1→2')
+% ylabel('PLI')
+% 
+% figure
+% for i=1:1:data_col
+%     scatter(te21(i,:),pli(i,:));
+%     hold on
+% end
+% xlabel('TE2→1')
+% ylabel('PLI')
 
-figure
-plot(1:data_row,te21,'-.');
-xlabel('')
-ylabel('TE 2→1')
-
-%% TE-PLI
-figure
-for i=1:1:data_col
-    scatter(te12(i,:),pli(i,:));
-    hold on
+%% エポック-PLI
+for i=1:6
+    figure
+    plot(pli(i,:))
+    ylim([0 1])
+    xlabel('epoch')
+    ylabel('PLI')
+    title('A=',A(i))
 end
-xlabel('TE1→2')
-ylabel('PLI')
 
-figure
-for i=1:1:data_col
-    scatter(te21(i,:),pli(i,:));
-    hold on
+%% エポック-rho
+for i=1:6
+    figure
+    plot(rho(i,:))
+    ylim([0 1])
+    xlabel('epoch')
+    ylabel('rho')
+    title('A=',A(i))
 end
-xlabel('TE2→1')
-ylabel('PLI')
 
