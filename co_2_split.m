@@ -5,7 +5,7 @@
 addpath("../../2019/HERMES_lib/tim-matlab-1.2.0/");
 
 %A = (0:0.0001:0.1;3)';
- A = (0:0.005:0.1)';
+ A = (0:0.001:0.1)';
 % A=0.002;
 %[s,~] = size(A);
 s = size(A,1);
@@ -42,7 +42,7 @@ for i=1:1:s
         
         
     end    
-    rst(1,2:392+1) = mean(tmp_rst);
+    rst(i,2:392+1) = mean(tmp_rst);
     
     clearvars ts filtered1 filtered2 tmp_rst
 end
