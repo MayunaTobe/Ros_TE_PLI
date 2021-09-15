@@ -51,9 +51,11 @@ mean_pli = mean(pli,2);
 % ylabel('PLI')
 
 %% エポック-PLI
+figure
 for i=1:6
-    figure
-    plot(pli(i,:))
+    subplot(2,3,i)
+    %figure
+    plot(pli(i,:),'.')
     ylim([0 1])
     xlabel('epoch')
     ylabel('PLI')
@@ -61,9 +63,11 @@ for i=1:6
 end
 
 %% エポック-rho
+figure
 for i=1:6
-    figure
-    plot(rho(i,:))
+    subplot(2,3,i)
+    %figure
+    plot(rho(i,:),'x')
     ylim([0 1])
     xlabel('epoch')
     ylabel('rho')
