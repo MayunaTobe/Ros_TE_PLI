@@ -9,8 +9,8 @@ addpath("../../2019/HERMES_lib/tim-matlab-1.2.0/");
 % A=0.002;
 %[s,~] = size(A);
 s = size(A,1);
-rst = zeros(s,392+1);
-tmp_rst = zeros(10,98*4);
+%rst = zeros(s,392+1);
+%tmp_rst = zeros(10,98*4);
     
 
 for i=1:1:s
