@@ -2,12 +2,13 @@
 % 初期値も引数として指定
 function [ts]= Rossler3(A,y0)
 
-tspan = [0 1000];
+N = 3;
+tspan = [0 500*N];
 %ts = zeros(49001,2);
 
 % tsのステップ幅
 ts_start = 1000;
-ts_end = 50000*2;
+ts_end = 50000*N;
 
 [t,y] = ode45(@(t,y)Ros(t,y,A),tspan,y0);
 

@@ -6,11 +6,11 @@
 figtitle = 'D0'; %タイトル
 
 %% データの代入
-rho = rst(:,2:2+97);
-pli = rst(:,100:100+97);
-te12 = rst(:,198:198+97);
-te21 = rst(:,296:296+97);
-A = rst(:,1);
+%rho = rst(:,2:2+97);
+%pli = rst(:,100:100+97);
+%te12 = rst(:,198:198+97);
+%te21 = rst(:,296:296+97);
+%A = rst(:,1);
 data_row = size(rho,2); % PLI、TEそれぞれの個数
 data_col = size(rho,1); % Aの個数
 
