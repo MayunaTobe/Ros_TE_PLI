@@ -5,7 +5,7 @@
 addpath("../../2019/HERMES_lib/tim-matlab-1.2.0/");
 
 %A = (0:0.0001:0.1;3)';
- A = (0:0.02:0.1)';
+ A = (0:0.005:0.1)';
 % A=0.002;
 %[s,~] = size(A);
 s = size(A,1);
@@ -27,8 +27,8 @@ for i=1:1:s
         % analysisPLI;
         pli_a = pli_cal_split(filtered1,filtered2);
         % analysisTE;
-%         te_val12= te_cal_split(filtered1,filtered2);
-%         te_val21= te_cal_split(filtered2,filtered1);
+        te_val12= te_cal_split(filtered1,filtered2);
+        te_val21= te_cal_split(filtered2,filtered1);
         
         for l=1:1:floor(size(filtered1,1)/500)
             rho_a(l) = corr(filtered1(1+500*(l-1):(l)*500),filtered2(1+500*(l-1):(l)*500));
@@ -42,15 +42,15 @@ for i=1:1:s
         
         tmp_rho(j,:)=rho_a;
         tmp_pli(j,:)=pli_a;
-%         tmp_te12(j,:)=te_val12;
-%         tmp_te21(j,:)=te_val21;
+        tmp_te12(j,:)=te_val12;
+        tmp_te21(j,:)=te_val21;
     end
     % 平均を取る
     %rst(i,2:392+1) = mean(tmp_rst);
     rho(i,:)=mean(tmp_rho);
     pli(i,:)=mean(tmp_pli);
-%     te12=mean(tmp_te12);
-%     te21=mean(tmp_te21);
+    te12(i,:)=mean(tmp_te12);
+    te21(i,:)=mean(tmp_te21);
     
     clearvars ts filtered1 filtered2 
 end

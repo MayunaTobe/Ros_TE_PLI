@@ -50,10 +50,13 @@ mean_pli = mean(pli,2);
 % xlabel('TE2→1')
 % ylabel('PLI')
 
+%%
+A_len=size(A,1);
+
 %% エポック-PLI
 figure
-for i=1:6
-    subplot(2,3,i)
+for i=1:A_len
+    subplot(2,floor(A_len/2)+1,i)
     %figure
     plot(pli(i,:),'.')
     ylim([0 1])
@@ -64,13 +67,36 @@ end
 
 %% エポック-rho
 figure
-for i=1:6
-    subplot(2,3,i)
+for i=1:A_len
+    subplot(2,floor(A_len/2)+1,i)
     %figure
     plot(rho(i,:),'x')
     ylim([0 1])
     xlabel('epoch')
     ylabel('rho')
+    title('A=',A(i))
+end
+
+%% エポック-TE
+figure
+for i=1:A_len
+    subplot(2,floor(A_len/2)+1,i)
+    %figure
+    plot(te12(i,:),'x')
+    ylim([0 1])
+    xlabel('epoch')
+    ylabel('TE12')
+    title('A=',A(i))
+end
+
+figure
+for i=1:A_len
+    subplot(2,floor(A_len/2)+1,i)
+    %figure
+    plot(te21(i,:),'x')
+    ylim([0 1])
+    xlabel('epoch')
+    ylabel('TE21')
     title('A=',A(i))
 end
 
