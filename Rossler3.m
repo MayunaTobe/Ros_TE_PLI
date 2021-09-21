@@ -3,12 +3,14 @@
 function [ts]= Rossler3(A,y0)
 
 N = 3;
-tspan = [0 500*N];
+%tspan = [0 500*N];
+tspan = [1500 2000];
 %ts = zeros(49001,2);
 
 % tsのステップ幅
 ts_start = 1000;
-ts_end = 50000*N;
+% ts_end = 50000*N;
+ts_end = 50000*1;
 
 [t,y] = ode45(@(t,y)Ros(t,y,A),tspan,y0);
 
