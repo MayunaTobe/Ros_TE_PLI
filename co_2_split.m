@@ -5,7 +5,7 @@
 addpath("../../2019/HERMES_lib/tim-matlab-1.2.0/");
 
 %A = (0:0.0001:0.1;3)';
- A = (0:0.005:0.1)';
+ A = (0:0.001:0.1)';
 % A=0.002;
 %[s,~] = size(A);
 s = size(A,1);
@@ -29,6 +29,9 @@ for i=1:1:s
         % analysisTE;
         te_val12= te_cal_split(filtered1,filtered2);
         te_val21= te_cal_split(filtered2,filtered1);
+        % 時系列を分割していないTE
+        te_ns_a12 = te_cal(filtered1,filtered2);
+        te_ns_a21 = te_cal(filtered2,filtered1);
         
         for l=1:1:floor(size(filtered1,1)/500)
             rho_a(l) = corr(filtered1(1+500*(l-1):(l)*500),filtered2(1+500*(l-1):(l)*500));
@@ -44,6 +47,8 @@ for i=1:1:s
         tmp_pli(j,:)=pli_a;
         tmp_te12(j,:)=te_val12;
         tmp_te21(j,:)=te_val21;
+        tmp_te_ns12(j,:)=te_ns_a12;
+        tmp_te_ns21(j,:)=te_ns_a21;
     end
     % 平均を取る
     %rst(i,2:392+1) = mean(tmp_rst);
@@ -51,6 +56,9 @@ for i=1:1:s
     pli(i,:)=mean(tmp_pli);
     te12(i,:)=mean(tmp_te12);
     te21(i,:)=mean(tmp_te21);
+    te_ns12(i,:)=mean(tmp_te_ns12);
+    te_ns21(i,:)=mean(tmp_te_ns21);
+    
     
     clearvars ts filtered1 filtered2 
 end
