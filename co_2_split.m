@@ -24,14 +24,19 @@ for i=1:1:s
         
         [filtered1, filtered2] = bp(ts); %バンドパス
         
-        % analysisPLI;
+        % 時系列を分割したPLI;
         pli_a = pli_cal_split(filtered1,filtered2);
         % analysisTE;
         te_val12= te_cal_split(filtered1,filtered2);
         te_val21= te_cal_split(filtered2,filtered1);
+        
         % 時系列を分割していないTE
         te_ns_a12 = te_cal(filtered1,filtered2);
         te_ns_a21 = te_cal(filtered2,filtered1);
+        % 時系列を分割していないPLI
+        pli_ns_a = pli_cal(filtered1,filtered2);
+        % 時系列を分割していないrho
+        rho_ns_a = corr(filtered1,filtered2);
         
         for l=1:1:floor(size(filtered1,1)/500)
             rho_a(l) = corr(filtered1(1+500*(l-1):(l)*500),filtered2(1+500*(l-1):(l)*500));
@@ -47,8 +52,12 @@ for i=1:1:s
         tmp_pli(j,:)=pli_a;
         tmp_te12(j,:)=te_val12;
         tmp_te21(j,:)=te_val21;
+        
         tmp_te_ns12(j,:)=te_ns_a12;
         tmp_te_ns21(j,:)=te_ns_a21;
+        tmp_pli_ns(j,:)=pli_ns_a;
+        tmp_rho_ns(j,:)=rho_ns_a;
+        
     end
     % 平均を取る
     %rst(i,2:392+1) = mean(tmp_rst);
@@ -56,9 +65,11 @@ for i=1:1:s
     pli(i,:)=mean(tmp_pli);
     te12(i,:)=mean(tmp_te12);
     te21(i,:)=mean(tmp_te21);
+    
     te_ns12(i,:)=mean(tmp_te_ns12);
     te_ns21(i,:)=mean(tmp_te_ns21);
-    
+    pli_ns(i,:)=mean(tmp_pli_ns);
+    rho_ns(i,:)=mean(tmp_rho_ns);
     
     clearvars ts filtered1 filtered2 
 end
