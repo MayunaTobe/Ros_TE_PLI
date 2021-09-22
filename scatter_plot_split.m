@@ -100,3 +100,14 @@ for i=1:A_len
     title('A=',A(i))
 end
 
+%% A-TE（全部の時系列）
+figure
+plot(A,te_ns12,'.')
+hold on
+plot(A,te_ns21,'.')
+xlabel('A')
+ylabel('TE（全時系列）')
+
+
+
+
