@@ -54,51 +54,83 @@ mean_pli = mean(pli,2);
 A_len=size(A,1);
 
 %% エポック-PLI
-figure
-for i=1:A_len
-    subplot(2,floor(A_len/2)+1,i)
-    %figure
-    plot(pli(i,:),'.')
-    ylim([0 1])
-    xlabel('epoch')
-    ylabel('PLI')
-    title('A=',A(i))
-end
+% figure
+% for i=1:A_len
+%     subplot(2,floor(A_len/2)+1,i)
+%     %figure
+%     plot(pli(i,:),'.')
+%     ylim([0 1])
+%     xlabel('epoch')
+%     ylabel('PLI')
+%     title('A=',A(i))
+% end
+
+% figure
+% for i=1:A_len
+%     plot(pli(i,:),'.')
+%     hold on
+% end
+% ylim([0 1])
+% xlabel('epoch')
+% ylabel('PLI')
+%title('A=',A(i))
+
 
 %% エポック-rho
-figure
-for i=1:A_len
-    subplot(2,floor(A_len/2)+1,i)
-    %figure
-    plot(rho(i,:),'x')
-    ylim([0 1])
-    xlabel('epoch')
-    ylabel('rho')
-    title('A=',A(i))
-end
+% figure
+% for i=1:A_len
+%     subplot(2,floor(A_len/2)+1,i)
+%     %figure
+%     plot(rho(i,:),'x')
+%     ylim([0 1])
+%     xlabel('epoch')
+%     ylabel('rho')
+%     title('A=',A(i))
+% end
+
+% figure
+% for i=1:A_len
+%     plot(rho(i,:),'.')
+%     hold on
+% end
+% ylim([0 1])
+% xlabel('epoch')
+% ylabel('rho')
+%title('A=',A(i))
+
 
 %% エポック-TE
-figure
-for i=1:A_len
-    subplot(2,floor(A_len/2)+1,i)
-    %figure
-    plot(te12(i,:),'x')
-    ylim([0 1])
-    xlabel('epoch')
-    ylabel('TE12')
-    title('A=',A(i))
-end
+% figure
+% for i=1:A_len
+%     subplot(2,floor(A_len/2)+1,i)
+%     %figure
+%     plot(te12(i,:),'x')
+%     %ylim([0 1])
+%     xlabel('epoch')
+%     ylabel('TE12')
+%     title('A=',A(i))
+% end
+% 
+% figure
+% for i=1:A_len
+%     subplot(2,floor(A_len/2)+1,i)
+%     %figure
+%     plot(te21(i,:),'x')
+%     %ylim([0 1])
+%     xlabel('epoch')
+%     ylabel('TE21')
+%     title('A=',A(i))
+% end
 
 figure
 for i=1:A_len
-    subplot(2,floor(A_len/2)+1,i)
-    %figure
-    plot(te21(i,:),'x')
-    ylim([0 1])
-    xlabel('epoch')
-    ylabel('TE21')
-    title('A=',A(i))
+    plot(te12(i,:),'.')
+    hold on
 end
+%ylim([0 1])
+xlabel('epoch')
+ylabel('TE')
+%title('A=',A(i))
 
 %% A-TE（全部の時系列）
 figure
@@ -107,6 +139,54 @@ hold on
 plot(A,te_ns21,'.')
 xlabel('A')
 ylabel('TE（全時系列）')
+%% A-PLI（全部の時系列）
+figure
+plot(A,pli_ns,'.')
+xlabel('A')
+ylabel('PLI（全時系列）')
+%% A-rho（全部の時系列）
+figure
+plot(A,rho_ns,'.')
+xlabel('A')
+ylabel('rho（全時系列）')
+
+%% TE-PLI全時系列散布図
+figure
+plot(te_ns12,pli_ns,'.')
+hold on
+plot(te_ns21,pli_ns,'.')
+xlabel('TE（全時系列）')
+ylabel('PLI（全時系列）')
+
+%% NaN値の処理(TE)
+f_te12 = te12;
+f_te12(f_te12<0) = NaN;
+
+f_te21 = te21;
+f_te21(f_te21<0) = NaN;
+
+f_te_ns12 = te_ns12;
+f_te_ns12(f_te_ns12<0) = NaN;
+
+f_te_ns21 = te_ns12;
+f_te_ns21(f_te_ns21<0) = NaN;
+
+%% A-TE(
+figure
+plot(A,f_te_ns12,'.')
+hold on
+plot(A,f_te_ns21,'.')
+xlabel('A')
+ylabel('TE（全時系列(NaN)）')
+
+%% TE-PLI全時系列散布図
+figure
+plot(f_te_ns12,pli_ns,'.')
+hold on
+plot(f_te_ns21,pli_ns,'.')
+xlabel('TE（全時系列(NaN)）')
+ylabel('PLI（全時系列）')
+
 
 
 
