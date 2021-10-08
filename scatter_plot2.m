@@ -16,6 +16,9 @@ plot(te_sort,smooth(movmean(pli_ns_sort,5),0.1,'loess'),'LineWidth',2)
 xlabel('TE')
 ylabel('PLI')
 
+hold off
+
+figure
 %% epoch-PLIのグラフ
 c = 1;
 for i=1:5
