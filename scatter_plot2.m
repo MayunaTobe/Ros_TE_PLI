@@ -1,5 +1,6 @@
 % 散布図作成
 % 最初にデータを読み込み（sp_A0001_all_L50000.mat)
+load('sp_A0001_all_L50000.mat')
 
 %% TE-PLI 散布図
 % データ整理
@@ -34,7 +35,7 @@ A = [0, 0.02,0.04,0.06,0.08,0.1];
 for i=1:6
     % プロット
     subplot(6,1,i)
-    plot(pli(c,:),'k','LineWidth',0.9)
+    plot(pli(c,:),'k','LineWidth',1.2)
     
     % フォントサイズ変更
     h_axes = gca;
@@ -46,7 +47,9 @@ for i=1:6
     xlim([0 101]);
     ylim([0 1.0]);
     %xlabel('epoch');
-    ylabel('PLI','FontSize',15);
+    if(i==3)
+        ylabel('PLI','FontSize',15)
+    end
     title(['A=',num2str(A(i))],'FontSize',15)
     c=c+200;
 end

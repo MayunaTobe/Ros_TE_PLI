@@ -16,8 +16,8 @@ for i=1:6
     
     % フォントサイズ変更
     h_axes = gca;
-    h_axes.XAxis.FontSize = 15;
-    h_axes.YAxis.FontSize = 15;
+    h_axes.XAxis.FontSize = 13;
+    h_axes.YAxis.FontSize = 13;
     
     if(i==3)
         ylabel('filtered x_1, filtereed x_2')
