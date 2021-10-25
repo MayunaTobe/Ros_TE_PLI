@@ -10,9 +10,9 @@ j=4;
 for i=1:6
     ts = Rossler3(A(i),y0(:,j));
 
-    [filtered1, filtered2] = bp(ts); %バンドパス
+    [filtered1(:,i), filtered2(:,i)] = bp(ts); %バンドパス
     subplot(6,1,i)
-    plot(filtered1,'k');
+    plot(filtered1(:,i),'k');
     
     % フォントサイズ変更
     h_axes = gca;
@@ -25,7 +25,7 @@ for i=1:6
     
     grid on
     hold on
-    plot(filtered2,'r');
+    plot(filtered2(:,i),'r');
     xlim([20000 40000])
     title(['A=',num2str(A(i))],'FontSize',15)
 
