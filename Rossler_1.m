@@ -15,7 +15,7 @@ desiredFs = 100;
 
 w=0.9;
 figure
-plot(ry(1000:20000,1),'LineWidth',w);
+plot(ry(1000:20000,1),'LineWidth',1,'Color','k');
 xlim([0 15000]);
 grid on
 pbaspect([4 1 1])
@@ -27,7 +27,11 @@ ylabel('x')
 % plot(rt,ry(:,4));
 
 % figure
- plot3(y(:,1),y(:,2),y(:,3));
+plot3(y(:,1),y(:,2),y(:,3),'Color','k');
+xlabel('x');
+ylabel('y');
+zlabel('z');
+grid on
  
 
 ts(:,1) = ry(1000:9000,1); %ts1にリサンプルしたyの1行目を代入
